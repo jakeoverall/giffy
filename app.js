@@ -1,4 +1,4 @@
-$('#gif-form').on('submit', function(e){
+$('#get-gif-form').on('submit', function(e){
     e.preventDefault();
     getGifPromiseStyle(this['gif-search'].value);
 })
