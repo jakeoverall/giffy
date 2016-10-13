@@ -8,7 +8,9 @@ function getGifCallback(query){
 }
 
 function getGifPromiseStyle(query){
-    var gettingData = $.get(`http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC`)
+    var url = "https://bcw-getter.herokuapp.com/?url=";
+    var apiUrl = url + encodeURIComponent('http://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC');
+    var gettingData = $.get(apiUrl)
         console.log(gettingData)
         gettingData.then(update)
         gettingData.fail(function(res){
@@ -32,7 +34,7 @@ function getGifAjaxStyle(query){
 
 
 function update(res){
-    console.log(res)
+    res = JSON.parse(res)
     var gifs = res.data;
     var randI = Math.floor(Math.random()* gifs.length - 1)
     var gif = gifs[randI].embed_url
